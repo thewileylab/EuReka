@@ -14,3 +14,14 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Imports: 
+    DBI,
+    bigrquery,
+    dplyr,
+    httr,
+    magrittr,
+    rlang
+Suggests: 
+    sodium,
+    spelling
+Language: en-US
