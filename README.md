@@ -9,13 +9,15 @@
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
+## Overview
+
 A suite of tools for working in the University of Colorado Eureka
 environment in R.
 
 ## Installation
 
-You can install the released version of wileyr from
-[GitHub](https://github.com/EuReka/) with:
+You can install the development version of `EuReka` from
+[GitHub](https://github.com/thewileylab/euReka/) with:
 
 ``` r
 # install.packages("devtools")

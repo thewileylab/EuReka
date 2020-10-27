@@ -5,6 +5,8 @@ template:
 navbar:
   structure:
     right: [reference, github]
+home:
+  strip_header: true
 authors:
   The Wiley Lab:
     href: https://www.thewileylab.org/
