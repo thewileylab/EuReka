@@ -4,7 +4,8 @@ Version: 0.1.0
 Authors@R: c(
             person('Laura', 'Wiley', email = 'laura.wiley@cuanschutz.edu', role = c('aut')),
             person('Melissa', 'Wilson', email = 'melissa.wilson@cuanschutz.edu', role = c('aut')),
-            person('David', 'Mayer', email = 'david.mayer@cuanschutz.edu', role = c('cre', 'aut'))
+            person('David', 'Mayer', email = 'david.mayer@cuanschutz.edu', role = c('cre', 'aut')),
+            person(given = "The Wiley Lab", role = c("cph", "fnd"))
             )
 Description: At this time, this package contains functions to help authenticate with Google BigQuery in the, Eureka Server environment, and a modified dplyr::collect() which parses large integer fields as a character.
 URL: http://eureka.thewileylab.org/, https://github.com/thewileylab/EuReka

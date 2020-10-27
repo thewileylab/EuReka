@@ -1,1 +1,20 @@
 url: http://eureka.thewileylab.org
+template:
+  params:
+    bootswatch: cerulean
+navbar:
+  structure:
+    right: [reference, github]
+authors:
+  The Wiley Lab:
+    href: https://www.thewileylab.org/
+    html: <img src="https://lh5.googleusercontent.com/INbLjqYAOMKqiaFsiaPNmpi4_SNPMsyJPSRo9RoKQHVO6goepzol2Wzdfbi40dTQFUKWwlI=w16383" height="24" />
+components:
+    home: ~
+reference:
+  - title: 'Connecting to BigQuery'
+    desc: 'Use these functions to assist with connecting R to Google BigQuery.'
+    contents:
+      - eureka_dbCreateToken
+      - eureka_dbConnect
+      - eureka_collect
