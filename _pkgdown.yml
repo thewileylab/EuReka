@@ -10,7 +10,7 @@ home:
 authors:
   The Wiley Lab:
     href: https://www.thewileylab.org/
-    html: <img src="https://lh3.googleusercontent.com/V6Fzo2lYYOPncH_f8vQtyPC-0R3rCdelyr_ETrySKSQB8HMtNcn8ZRHH9e02M_1DYmISkrQ=w16383" height="24" />
+    html: <img src="man/figures/WileyLab_1.png" height="24" />
 components:
     home: ~
 reference:
