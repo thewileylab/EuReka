@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://eureka.thewileylab.org/index.html</loc>
+  </url>
+  <url>
+    <loc>http://eureka.thewileylab.org/reference/eureka_collect.html</loc>
+  </url>
+  <url>
+    <loc>http://eureka.thewileylab.org/reference/eureka_dbConnect.html</loc>
+  </url>
+  <url>
+    <loc>http://eureka.thewileylab.org/reference/eureka_dbCreateToken.html</loc>
+  </url>
+  <url>
+    <loc>http://eureka.thewileylab.org/reference/internal-assets.html</loc>
+  </url>
+</urlset>

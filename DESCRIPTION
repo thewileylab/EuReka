@@ -7,7 +7,7 @@ Authors@R: c(
             person('David', 'Mayer', email = 'david.mayer@cuanschutz.edu', role = c('cre', 'aut'))
             )
 Description: At this time, this package contains functions to help authenticate with Google BigQuery in the, Eureka Server environment, and a modified dplyr::collect() which parses large integer fields as a character.
-URL: https://github.com/thewileylab/EuReka
+URL: http://eureka.thewileylab.org/, https://github.com/thewileylab/EuReka
 BugReports: https://github.com/thewileylab/EuReka/issues
 License: MIT + file LICENSE
 Encoding: UTF-8

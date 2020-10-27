@@ -88,7 +88,7 @@
 <a href="#authenticate-with-google-bigquery" class="anchor"></a>Authenticate with Google BigQuery</h3>
 <p>In some cases, users may have multiple Google accounts provided by their institution in addition to their personal Gmail account. Each of these accounts will need their own set of credentials to access Google BigQuery through R. <code>EuReka</code> allows users to cache their credentials with a “google_account_type” tag in their home directory.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/thewileylab/EuReka">EuReka</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://eureka.thewileylab.org/">EuReka</a></span><span class="op">)</span>
 <span class="fu"><a href="reference/eureka_dbCreateToken.html">eureka_dbCreateToken</a></span><span class="op">(</span>google_account_type <span class="op">=</span> <span class="st">'hdcuser'</span><span class="op">)</span></pre></div>
 <p>This will initiate the OAuth flow, wherein users may log in with the desired Google account. Credentials will be associated with the user supplied tag when the process is complete.</p>
 </div>
