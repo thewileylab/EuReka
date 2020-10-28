@@ -7,6 +7,10 @@ navbar:
     right: [reference, github]
 home:
   strip_header: true
+
+  links:
+  - text: Additional WileyLab tools
+    href: https://github.com/thewileylab/
 authors:
   The Wiley Lab:
     href: https://www.thewileylab.org/
