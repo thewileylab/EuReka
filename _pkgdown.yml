@@ -14,7 +14,7 @@ home:
 authors:
   The Wiley Lab:
     href: https://www.thewileylab.org/
-    html: <img src="https://raw.githubusercontent.com/thewileylab/EuReka/81af6523356bc59954b3c62df0657c1ee698fc1e/man/figures/WileyLab.svg" height="24" />
+    html: <img src="https://raw.githubusercontent.com/thewileylab/EuReka/main/man/figures/WileyLab.svg" height="24" />
 components:
     home: ~
 reference:
