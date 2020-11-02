@@ -1,7 +1,7 @@
 url: http://eureka.thewileylab.org
 template:
   params:
-    bootswatch: cerulean
+    bootswatch: flatly
 navbar:
   structure:
     right: [reference, github]
@@ -10,7 +10,7 @@ home:
 
   links:
   - text: Additional WileyLab tools
-    href: https://github.com/thewileylab/
+    href: https://www.thewileylab.org/software/
 authors:
   The Wiley Lab:
     href: https://www.thewileylab.org/
