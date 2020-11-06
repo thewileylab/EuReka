@@ -1,0 +1,16 @@
+#' Project Connect
+#'
+#' Connect to `{project}` project
+#'
+#' A DBI connection object to the `{project}` project in Google BigQuery. Authentication is managed by the `EuReka` package.
+#'
+#' @keywords internal
+#' @return A DBI Google BigQuery Connection object
+#' @export
+#' @importFrom EuReka eureka_dbConnect
+project_connect <- function() {{
+  EuReka::eureka_dbConnect(project_id = "{project}",
+                           google_account_type = "{google_account_type}",
+                           bigint_type = 'character')
+}}
+

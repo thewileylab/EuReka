@@ -1,0 +1,19 @@
+#' {project}.{dataset}: {table}
+#'
+#' The "{table}" table in the {dataset} BigQuery Dataset
+#'
+#' @return A DBI connection object representing the {table} table in the {dataset} dataset in Google BigQuery. Remember to `EuReka::eureka_collect()` the output for local in memory operations.
+#'
+#' @importFrom dplyr tbl
+#' @export
+#'
+#' @format A Google BigQuery Dataset table with {nrow} rows and {nvar} variables:
+#' \describe{
+{items}
+#'   ...
+#' }
+#'
+{dataset}.{table} <- function() {
+  tbl(src = project_connect(), "{dataset}.{table}")
+}
+
