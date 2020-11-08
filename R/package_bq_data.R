@@ -7,10 +7,10 @@
 #' @return
 #' @export
 #' @importFrom bigrquery bq_dataset_tables bq_project_datasets
-#' @importFrom dplyr mutate
+#' @importFrom dplyr count mutate pull tbl
 #' @importFrom glue glue glue_collapse
 #' @importFrom magrittr %>% %<>%
-#' @importFrom purrr map
+#' @importFrom purrr imap map map2 map_chr map_int
 #' @importFrom usethis create_package
 #' @examples
 package_bq_data <- function(con, google_account_type, path) {
@@ -29,7 +29,10 @@ package_bq_data <- function(con, google_account_type, path) {
   description_fields <- list(
     Title = glue::glue('Easy Eureka Access to `{project}` Project Datasets from Google BigQuery'),
     Description = glue::glue('This is a meta package, providing functions and documentation pertaining to the `{project}` project on Google BigQuery.'),
-    `Authors@R` = 'person("EuReka::package_bq_data()", role = c("aut", "cre")',
+    `Authors@R` = 'c(person("EuReka::package_bq_data()", role = c("aut")),
+                    person("David", "Mayer", email = "david.mayer@cuanschutz.edu", role = c("cre", "aut")),
+                    person(given = "The Wiley Lab", role = c("cph", "fnd"))
+                    )',
     License = "MIT + file LICENSE",
     Language =  "en-US",
     Imports = 'dplyr, EuReka'
@@ -59,7 +62,10 @@ package_bq_data <- function(con, google_account_type, path) {
   message('Retrieving Project Dataset Information')
   project_info %<>%
       tidyr::unnest(cols = c(bq_tables)) %>%
-      mutate(dataset_name = map_chr(.data$bq_dataset,
+      mutate(bq_fields = map(.data$bq_tables,
+                             ~bigrquery::bq_table_fields(.x)
+                             ),
+             dataset_name = map_chr(.data$bq_dataset,
                                     ~ .x$dataset),
              table_name = map_chr(.data$bq_tables,
                                   ~ .x$table),
@@ -72,7 +78,41 @@ package_bq_data <- function(con, google_account_type, path) {
                             ),
              nvar = map_int(.data$tbl,
                             ~ ncol(.x)
-                            )
+                            ),
+             variable = map(.data$bq_fields,
+                            ~map(.x,
+                                 ~.x$name)
+                            ),
+             class = map(.data$bq_fields,
+                            ~map(.x,
+                                 ~.x$type)
+                         ),
+             items = imap(.data$table_name,
+                          ~{variable <- .data$variable[[.y]]
+                            class <- .data$class[[.y]]
+                            glue::glue_collapse(x = map(EuReka::item_template,
+                                                       ~glue::glue(.x))[[1]],
+                                               sep = '\n'
+                                               )}
+                          )
              )
   message('Complete')
+
+  ## Write Functions
+  imap(project_info$table_name,
+       ~{dataset <- project_info$dataset_name[[.y]]
+         table <- project_info$table_name[[.y]]
+         nrow <- project_info$nrow[[.y]]
+         nvar <- project_info$nvar[[.y]]
+         items <- project_info$items[[.y]]
+         cat(glue::glue_collapse(x = map(EuReka::table_template,
+                                         ~glue::glue(.x)),
+                                 sep = '\n'
+                                 ),
+             file = glue::glue('{package_path}/R/{dataset}.{table}.R')
+             )
+         })
+
 }
+
+
