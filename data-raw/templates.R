@@ -6,9 +6,9 @@ usethis::use_data(license, compress = 'xz', overwrite = TRUE)
 connect_template <- readLines('data-raw/templates/connect_template.txt')
 usethis::use_data(connect_template, compress = 'xz', overwrite = TRUE)
 
-## rd template
-rd_template <- readLines('data-raw/templates/table_template.txt')
-usethis::use_data(rd_template, compress = 'xz', overwrite = TRUE)
+## table template
+table_template <- readLines('data-raw/templates/table_template.txt')
+usethis::use_data(table_template, compress = 'xz', overwrite = TRUE)
 
 ## item template
 item_template <- readLines('data-raw/templates/item_template.txt')

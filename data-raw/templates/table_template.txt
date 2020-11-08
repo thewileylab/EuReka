@@ -8,12 +8,12 @@
 #' @export
 #'
 #' @format A Google BigQuery Dataset table with {nrow} rows and {nvar} variables:
-#' \describe{
+#' \describe{{
 {items}
 #'   ...
-#' }
+#' }}
 #'
-{dataset}.{table} <- function() {
+{dataset}.{table} <- function() {{
   tbl(src = project_connect(), "{dataset}.{table}")
-}
+}}
 
