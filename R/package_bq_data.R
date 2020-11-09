@@ -7,6 +7,7 @@
 #' @return
 #' @export
 #' @importFrom bigrquery bq_dataset_tables bq_project_datasets
+#' @importFrom devtools build document
 #' @importFrom dplyr count mutate pull tbl
 #' @importFrom glue glue glue_collapse
 #' @importFrom magrittr %>% %<>%
@@ -98,7 +99,7 @@ package_bq_data <- function(con, google_account_type, path) {
              )
   message('Complete')
 
-  ## Write Functions
+  ## Write Functions ----
   imap(project_info$table_name,
        ~{dataset <- project_info$dataset_name[[.y]]
          table <- project_info$table_name[[.y]]
@@ -112,6 +113,12 @@ package_bq_data <- function(con, google_account_type, path) {
              file = glue::glue('{package_path}/R/{dataset}.{table}.R')
              )
          })
+
+  ## Document New Package ----
+  document(pkg = package_path)
+
+  ## Build New Package ----
+  build(pkg = package_path)
 
 }
 
