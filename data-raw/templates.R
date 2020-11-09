@@ -1,6 +1,8 @@
-## WL License
+## WL Licenses
 license <- readLines('data-raw/templates/LICENSE.txt')
 usethis::use_data(license, compress = 'xz', overwrite = TRUE)
+license_md <- readLines('data-raw/templates/LICENSE_md.txt')
+usethis::use_data(license_md, compress = 'xz', overwrite = TRUE)
 
 ## connect template
 connect_template <- readLines('data-raw/templates/connect_template.txt')

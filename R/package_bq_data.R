@@ -46,8 +46,16 @@ package_bq_data <- function(con, google_account_type, path) {
                           check_name = FALSE,
                           open = FALSE
                           )
-  ### Add license file
+  ### Add license files
+  cat('^LICENSE\\.md$',
+      sep = '\n',
+      file = glue::glue('{package_path}/.Rbuildignore'),
+      append = T)
   cat(EuReka::license,
+      sep='\n',
+      file = glue::glue('{package_path}/LICENSE')
+      )
+  cat(EuReka::license_md,
       sep='\n',
       file = glue::glue('{package_path}/LICENSE.md')
       )
