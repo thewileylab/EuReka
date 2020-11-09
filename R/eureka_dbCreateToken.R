@@ -43,12 +43,15 @@ eureka_dbCreateToken <- function(google_account_type) {
     message(paste0('Token for ', google_account_type, ' already exists!'))
     } else {
       scopes <- "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/cloud-platform"
-      httr::oauth2.0_token(
-        endpoint = httr::oauth_endpoints("google"),
-        app = installed_app(),
-        scope = scopes,
-        use_oob = TRUE,
-        cache = file.path(path.expand("~"),token)
+      invisible(
+        httr::oauth2.0_token(
+          endpoint = httr::oauth_endpoints("google"),
+          app = installed_app(),
+          scope = scopes,
+          use_oob = TRUE,
+          cache = file.path(path.expand("~"),token)
+          )
         )
+      message('Success')
       }
   }
