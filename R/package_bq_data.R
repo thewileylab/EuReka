@@ -1,20 +1,37 @@
 #' Package BigQuery Data
 #'
+#' This function will package your HDC BigQuery project datasets allowing you to
+#' access all tables with functions. Each table is examined and relevant schema
+#' information is added to the package documentation. This allows for quick
+#' reference without having to open the BigQuery web interface. Additionally,
+#' RStudio's autocomplete feature may be used to accelerate table access.
+#'
 #' @param con An EuReka::eureka_dbConnect object
 #' @param google_account_type Google account type or GSuite domain
-#' @param path Where to create the data package
+#' @param path Where to create the package
+#' @param build Should the package be built? TRUE/FALSE
 #'
-#' @return
 #' @export
 #' @importFrom bigrquery bq_dataset_tables bq_project_datasets
 #' @importFrom devtools build document
 #' @importFrom dplyr count mutate pull tbl
+#' @importFrom fs fs_path
 #' @importFrom glue glue glue_collapse
 #' @importFrom magrittr %>% %<>%
 #' @importFrom purrr imap map map2 map_chr map_int
+#' @importFrom tibble enframe
+#' @importFrom tidyr unnest
 #' @importFrom usethis create_package
 #' @examples
-package_bq_data <- function(con, google_account_type, path) {
+#' \dontrun{
+#' con <- eureka_dbConnect(project_id = 'your_project_id',
+#'   google_account_type = 'your_account_credential_tag')
+#' EuReka::package_bq_data(con = con,
+#'   google_account_type = 'your_account_credential_tag',
+#'   path = '~/Desktop',
+#'   build = T)
+#' }
+package_bq_data <- function(con, google_account_type, path = '~/', build = TRUE) {
   ## Gather Info ----
   project <- con@project
   project_info <- bigrquery::bq_project_datasets(project) %>%
@@ -70,7 +87,7 @@ package_bq_data <- function(con, google_account_type, path) {
   ### Table Functions
   message('Retrieving Project Dataset Information')
   project_info %<>%
-      tidyr::unnest(cols = c(bq_tables)) %>%
+      tidyr::unnest(cols = c(.data$bq_tables)) %>%
       mutate(bq_fields = map(.data$bq_tables,
                              ~bigrquery::bq_table_fields(.x)
                              ),
@@ -126,7 +143,12 @@ package_bq_data <- function(con, google_account_type, path) {
   document(pkg = package_path)
 
   ## Build New Package ----
-  build(pkg = package_path)
+  if(build == TRUE) {
+    build(pkg = package_path)
+    }
+
+  ## Finish
+  message('Package complete!')
 
 }
 

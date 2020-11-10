@@ -4,18 +4,31 @@
 \alias{package_bq_data}
 \title{Package BigQuery Data}
 \usage{
-package_bq_data(con, google_account_type, path)
+package_bq_data(con, google_account_type, path = "~/", build = TRUE)
 }
 \arguments{
 \item{con}{An EuReka::eureka_dbConnect object}
 
 \item{google_account_type}{Google account type or GSuite domain}
 
-\item{path}{Where to create the data package}
-}
-\value{
+\item{path}{Where to create the package}
 
+\item{build}{Should the package be built? TRUE/FALSE}
 }
 \description{
-Package BigQuery Data
+This function will package your HDC BigQuery project datasets allowing you to
+access all tables with functions. Each table is examined and relevant schema
+information is added to the package documentation. This allows for quick
+reference without having to open the BigQuery web interface. Additionally,
+RStudio's autocomplete feature may be used to accelerate table access.
+}
+\examples{
+\dontrun{
+con <- eureka_dbConnect(project_id = 'your_project_id',
+  google_account_type = 'your_account_credential_tag')
+EuReka::package_bq_data(con = con,
+  google_account_type = 'your_account_credential_tag',
+  path = '~/Desktop',
+  build = T)
+}
 }

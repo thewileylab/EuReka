@@ -20,10 +20,17 @@ Depends:
 Imports:
     bigrquery,
     DBI,
+    devtools,
     dplyr,
+    fs,
+    glue,
     httr,
     magrittr,
-    rlang
+    purrr,
+    rlang,
+    tibble,
+    tidyr,
+    usethis
 Suggests: 
     sodium,
     spelling
