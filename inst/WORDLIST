@@ -1,4 +1,9 @@
 GSuite
+Gmail
+HDC
+Lifecycle
+RStudio's
+UNIX
 OAuth
 bigint
 dbConnect
@@ -6,3 +11,4 @@ dbCreateToken
 dplyr
 tbl
 tibble
+md

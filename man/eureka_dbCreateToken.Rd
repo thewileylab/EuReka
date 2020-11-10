@@ -15,7 +15,7 @@ Saves an authenticated Google OAuth token to current user's home directory
 \description{
 This function authenticates with Google using a Wiley Lab OAuth Consent Screen. Credentials are
 cached in a user's home directory and labeled according to the currently connected
-linux user account and the specified Google Account Type.
+UNIX user account and the specified Google Account Type.
 }
 \examples{
 \dontrun{

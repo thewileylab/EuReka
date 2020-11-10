@@ -20,7 +20,7 @@ This function will package your HDC BigQuery project datasets allowing you to
 access all tables with functions. Each table is examined and relevant schema
 information is added to the package documentation. This allows for quick
 reference without having to open the BigQuery web interface. Additionally,
-RStudio's autocomplete feature may be used to accelerate table access.
+RStudio's auto-complete feature may be used to accelerate table access.
 }
 \examples{
 \dontrun{

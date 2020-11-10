@@ -24,7 +24,7 @@ print.hidden_fn <- function(x, ...) {
 #'
 #' This function authenticates with Google using a Wiley Lab OAuth Consent Screen. Credentials are
 #' cached in a user's home directory and labeled according to the currently connected
-#' linux user account and the specified Google Account Type.
+#' UNIX user account and the specified Google Account Type.
 #'
 #' @param google_account_type Google account type or GSuite domain.
 #'

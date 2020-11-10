@@ -1,10 +1,57 @@
+# Datasets ----
+#' Connect Template
+#'
+#' A character vector containing a connection function template
+#'
+#' @docType data
+#'
+#' @format A character vector with 16 elements
+"connect_template"
+
+#' Item Template
+#'
+#' A character vector containing a description ITEM template
+#'
+#' @docType data
+#'
+#' @format A character vector with 1 element
+"item_template"
+
+#' License Template
+#'
+#' A character vector containing a LICENSE file template
+#'
+#' @docType data
+#'
+#' @format A character vector with 2 elements
+"license"
+
+#' License Md Template
+#'
+#' A character vector containing a LICENSE.md template
+#'
+#' @docType data
+#'
+#' @format A character vector with 21 elements
+"license_md"
+
+#' Table Function Template
+#'
+#' A character vector containing a table function template
+#'
+#' @docType data
+#'
+#' @format A character vector with 19 elements
+"table_template"
+
+# Functions ----
 #' Package BigQuery Data
 #'
 #' This function will package your HDC BigQuery project datasets allowing you to
 #' access all tables with functions. Each table is examined and relevant schema
 #' information is added to the package documentation. This allows for quick
 #' reference without having to open the BigQuery web interface. Additionally,
-#' RStudio's autocomplete feature may be used to accelerate table access.
+#' RStudio's auto-complete feature may be used to accelerate table access.
 #'
 #' @param con An EuReka::eureka_dbConnect object
 #' @param google_account_type Google account type or GSuite domain
