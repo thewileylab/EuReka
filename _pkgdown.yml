@@ -24,3 +24,7 @@ reference:
       - eureka_dbCreateToken
       - eureka_dbConnect
       - eureka_collect
+  - title: 'Package BigQuery Project Datasets'
+    desc: 'Create a package to access all BigQuery Project datasets and tables with functions!'
+    contents:
+      - package_bq_data
