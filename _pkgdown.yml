@@ -28,3 +28,11 @@ reference:
     desc: 'Create a package to access all BigQuery Project datasets and tables with functions!'
     contents:
       - package_bq_data
+  - title: 'Templates'
+    desc: 'Templates used to package BigQuery Project Datasets.'
+    contents:
+      - connect_template
+      - item_template
+      - table_template
+      - license
+      - license_md

@@ -4,6 +4,9 @@
     <loc>http://eureka.thewileylab.org/index.html</loc>
   </url>
   <url>
+    <loc>http://eureka.thewileylab.org/reference/connect_template.html</loc>
+  </url>
+  <url>
     <loc>http://eureka.thewileylab.org/reference/eureka_collect.html</loc>
   </url>
   <url>
@@ -16,6 +19,18 @@
     <loc>http://eureka.thewileylab.org/reference/internal-assets.html</loc>
   </url>
   <url>
+    <loc>http://eureka.thewileylab.org/reference/item_template.html</loc>
+  </url>
+  <url>
+    <loc>http://eureka.thewileylab.org/reference/license.html</loc>
+  </url>
+  <url>
+    <loc>http://eureka.thewileylab.org/reference/license_md.html</loc>
+  </url>
+  <url>
     <loc>http://eureka.thewileylab.org/reference/package_bq_data.html</loc>
+  </url>
+  <url>
+    <loc>http://eureka.thewileylab.org/reference/table_template.html</loc>
   </url>
 </urlset>
