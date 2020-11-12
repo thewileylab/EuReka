@@ -38,20 +38,22 @@ print.hidden_fn <- function(x, ...) {
 #' }
 eureka_dbCreateToken <- function(google_account_type) {
   user <- system("id -un", intern = TRUE)
-  token <- paste0(user,"_",google_account_type,".httr-oauth")
-  if(file.exists(file.path(path.expand('~'),token)) == TRUE){
+  token_name <- paste0(user,"_",google_account_type,".httr-oauth")
+  if(file.exists(file.path(path.expand('~'),token_name)) == TRUE){
     message(paste0('Token for ', google_account_type, ' already exists!'))
     } else {
       scopes <- "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/cloud-platform"
-      invisible(
+      token <- invisible(
         httr::oauth2.0_token(
           endpoint = httr::oauth_endpoints("google"),
           app = installed_app(),
           scope = scopes,
           use_oob = TRUE,
-          cache = file.path(path.expand("~"),token)
+          cache = FALSE
           )
         )
+      message('Redirecting to Google in web browser for authentication...')
+      saveRDS(token, file = file.path(path.expand("~"), token_name))
       message('Success')
       }
   }

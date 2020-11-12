@@ -32,12 +32,12 @@ eureka_dbConnect <- function(project_id, dataset_id = NULL, bigint_type = "chara
   token <- paste0(user,"_", google_account_type, ".httr-oauth")
   if(file.exists(file.path(path.expand('~'),token)) == TRUE){
     oauth_data <- readRDS(file.path(path.expand('~'), token))
-    bigrquery::bq_auth(token = oauth_data[[1]])
+    bigrquery::bq_auth(token = oauth_data)
     DBI::dbConnect(drv = bigrquery::bigquery(), project = project_id, dataset = dataset_id, bigint = bigint_type)
-  } else {
-    EuReka::eureka_dbCreateToken(google_account_type = google_account_type)
-    oauth_data <- readRDS(file.path(path.expand('~'), token))
-    bigrquery::bq_auth(token = oauth_data[[1]])
-    DBI::dbConnect(drv = bigrquery::bigquery(), project = project_id, dataset = dataset_id, bigint = bigint_type)
-    }
-}
+    } else {
+      EuReka::eureka_dbCreateToken(google_account_type = google_account_type)
+      oauth_data <- readRDS(file.path(path.expand('~'), token))
+      bigrquery::bq_auth(token = oauth_data)
+      DBI::dbConnect(drv = bigrquery::bigquery(), project = project_id, dataset = dataset_id, bigint = bigint_type)
+      }
+  }
