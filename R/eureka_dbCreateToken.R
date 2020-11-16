@@ -43,6 +43,7 @@ eureka_dbCreateToken <- function(google_account_type) {
     message(paste0('Token for ', google_account_type, ' already exists!'))
     } else {
       scopes <- "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/cloud-platform"
+      message('Redirecting to Google in web browser for authentication...')
       token <- invisible(
         httr::oauth2.0_token(
           endpoint = httr::oauth_endpoints("google"),
@@ -52,7 +53,6 @@ eureka_dbCreateToken <- function(google_account_type) {
           cache = FALSE
           )
         )
-      message('Redirecting to Google in web browser for authentication...')
       saveRDS(token, file = file.path(path.expand("~"), token_name))
       message('Success')
       }
