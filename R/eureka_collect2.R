@@ -60,7 +60,7 @@ eureka_collect2 <- function(.data, use_bucket = 'no', gcs_mount, cleanup = F) {
   table_ref <- bigrquery::as_bq_table(bq_temp$ops$x)
   table_size <- bigrquery::bq_table_size(table_ref)[1]/1000000
   ## Determine if table is too large to download
-  if(table_size < 10) {
+  if(table_size < 10) { ### Note: This is set arbitrarily low for testing!!!
     bigrquery::bq_table_download(table_ref, max_connections = 6L, bigint = .data$src$con@bigint)
     } else if (use_bucket == 'yes') {
       bq_cloud_table_import(bq_temp, gcs_mount)
