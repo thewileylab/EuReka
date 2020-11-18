@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">EuReka</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -79,9 +79,9 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install the development version of <code>EuReka</code> from <a href="https://github.com/thewileylab/euReka/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"thewileylab/EuReka"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"thewileylab/EuReka"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -90,29 +90,29 @@
 <h3 class="hasAnchor">
 <a href="#authenticate-with-google-bigquery" class="anchor"></a>Authenticate with Google BigQuery</h3>
 <p>In some cases, users may have multiple Google accounts provided by their institution in addition to their personal Gmail account. Each of these accounts will need their own set of credentials to access Google BigQuery through R. <code>EuReka</code> allows users to cache their credentials with a “google_account_type” tag in their home directory.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://eureka.thewileylab.org/">EuReka</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/eureka_dbCreateToken.html">eureka_dbCreateToken</a></span><span class="op">(</span>google_account_type <span class="op">=</span> <span class="st">'hdcuser'</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://eureka.thewileylab.org/">EuReka</a></span><span class="op">)</span>
+<span class="fu"><a href="reference/eureka_dbCreateToken.html">eureka_dbCreateToken</a></span><span class="op">(</span>google_account_type <span class="op">=</span> <span class="st">'hdcuser'</span><span class="op">)</span></code></pre></div>
 <p>This will initiate the OAuth flow, wherein users may log in with the desired Google account. Credentials will be associated with the user supplied tag when the process is complete.</p>
 </div>
 <div id="connect-to-bigquery-dataset" class="section level3">
 <h3 class="hasAnchor">
 <a href="#connect-to-bigquery-dataset" class="anchor"></a>Connect to BigQuery Dataset</h3>
 <p>To access these credentials when creating a connection object, reference the “google_account_type” tag in your Eureka connection object:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/eureka_dbConnect.html">eureka_dbConnect</a></span><span class="op">(</span>project_id <span class="op">=</span> <span class="st">'your-project-id'</span>,
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/eureka_dbConnect.html">eureka_dbConnect</a></span><span class="op">(</span>project_id <span class="op">=</span> <span class="st">'your-project-id'</span>,
                         dataset_id <span class="op">=</span> <span class="st">'your-dataset-id'</span>,
                         bigint_type <span class="op">=</span> <span class="st">'character'</span>,
-                        google_account_type <span class="op">=</span> <span class="st">'hdcuser'</span><span class="op">)</span></pre></div>
+                        google_account_type <span class="op">=</span> <span class="st">'hdcuser'</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="download-data-to-r-environment" class="section level3">
 <h3 class="hasAnchor">
 <a href="#download-data-to-r-environment" class="anchor"></a>Download data to R Environment</h3>
 <p>Often, the <code>bigrquery</code> package will have trouble parsing very large integer values. In order to read and manipulate these values in R, these values must first be CAST as strings so that R will properly interpret the values as characters.</p>
 <p><code><a href="reference/eureka_collect.html">eureka_collect()</a></code> wraps a low level <code>bigrquery</code> function that accepts a “bigint” variable, allowing data containing large integer values to be downloaded as characters. Non integer fields in the dataset will be parsed according to the BigQuery schema.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">interesting_data</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">con</span>, <span class="st">'table-name'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="reference/eureka_collect.html">eureka_collect</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">interesting_data</span> <span class="op">&lt;-</span> <span class="fu">tbl</span><span class="op">(</span><span class="va">con</span>, <span class="st">'table-name'</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/eureka_collect.html">eureka_collect</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="code-of-conduct" class="section level2">
