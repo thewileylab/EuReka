@@ -42,7 +42,7 @@ eureka_dbCreateToken <- function(google_account_type) {
   if(file.exists(file.path(path.expand('~'),token_name)) == TRUE){
     message(paste0('Token for ', google_account_type, ' already exists!'))
     } else {
-      scopes <- "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/bigquery https://www.googleapis.com/auth/cloud-platform"
+      scopes <- "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/bigquery.readonly https://www.googleapis.com/auth/devstorage.read_only"
       message('Redirecting to Google in web browser for authentication...')
       token <- invisible(
         httr::oauth2.0_token(
