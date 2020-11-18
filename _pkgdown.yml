@@ -11,6 +11,8 @@ home:
   links:
   - text: Additional WileyLab tools
     href: https://www.thewileylab.org/software
+  - text: Learn about Eureka Environment
+    href: https://www.healthdatacompass.org/cloud-analytics-infrastructure
 authors:
   The Wiley Lab:
     href: https://www.thewileylab.org/
