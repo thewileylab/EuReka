@@ -14,7 +14,7 @@ Currently implemented services include:
 \item{"Bioconductor"}
 \item{"CRAN"}
 \item{"GitHub"}
-\item{"RedCAP"}
+\item{"REDCap"}
 }}
 }
 \value{

@@ -1,3 +1,31 @@
+# Datasets ----
+#' Eureka Internet Database
+#'
+#' @description
+#' A dataset containing a directory of Health Data Compass approved web-services,
+#' their corresponding Eureka firewall access commands, and the URL where the
+#' service may be accessed.
+#'
+#' Currently implemented services include:
+#' \itemize{
+#' \item{"Bioconductor"}
+#' \item{"CRAN"}
+#' \item{"GitHub"}
+#' \item{"REDCap"}
+#' }
+#'
+#' @docType data
+#'
+#' @format A data frame with 4 rows and 3 variables:
+#' \describe{
+#'   \item{service}{The name of the HDC approved web-service.}
+#'   \item{cmd}{The Eureka system command used to initiate the request to open the Eureka firewall to the desired web-service.}
+#'   \item{url}{The URL corresponding to the HDC approved web-service.}
+#'   ...
+#' }
+"eureka_internet_db"
+
+# Functions ----
 #' Eureka Internet Status
 #'
 #' @description
@@ -11,7 +39,7 @@
 #' \item{"Bioconductor"}
 #' \item{"CRAN"}
 #' \item{"GitHub"}
-#' \item{"RedCAP"}
+#' \item{"REDCap"}
 #' }
 #'
 #' @return Invisibly return a list containing the url of the tested service, the returned HTTP
@@ -39,21 +67,21 @@ eureka_internet_status <- function(service) {
   if(nrow(selected_service) == 1) {
     firewall_status <- tryCatch({
       httr::HEAD(selected_service %>% pull(url), httr::timeout(2))
-      },
-      error=function(err) {
-        list(url = selected_service %>% pull(url), status_code = as.integer(500), last_checked = Sys.time()) ## 500 akin to HTTP response code for "Server error"
-      })
+    },
+    error=function(err) {
+      list(url = selected_service %>% pull(url), status_code = as.integer(500), last_checked = Sys.time()) ## 500 akin to HTTP response code for "Server error"
+    })
   } else{
     rlang::abort(rlang::format_error_bullets(c("x" = glue::glue('"{service_filter}" is an unrecognized service. Check EuReka::eureka_internet_db for a list of supported web-services.'))) )
   }
 
   if(firewall_status$status_code >= 500 & firewall_status$status_code <= 599) {
     rlang::inform(rlang::format_error_bullets(c("x" = glue::glue('The way is shut to {selected_service %>% pull(url)}. It was made by those who are Dead, and the Dead keep it, until the time comes.'))) )
-    } else if (firewall_status$status_code >= 200 & firewall_status$status_code <= 299) {
-      rlang::inform(rlang::format_error_bullets(c("i" = glue::glue('{selected_service %>% pull(url)} is open for business!'))) )
-      } else {
-        rlang::inform(rlang::format_error_bullets(c(glue::glue('The Eureka firewall may be considered simultaneously both open and closed to {selected_service %>% pull(url)} as a result of being linked to a random subatomic event that may or may not occur.'))) )
-        }
+  } else if (firewall_status$status_code >= 200 & firewall_status$status_code <= 299) {
+    rlang::inform(rlang::format_error_bullets(c("i" = glue::glue('{selected_service %>% pull(url)} is open for business!'))) )
+  } else {
+    rlang::inform(rlang::format_error_bullets(c(glue::glue('The Eureka firewall may be considered simultaneously both open and closed to {selected_service %>% pull(url)} as a result of being linked to a random subatomic event that may or may not occur.'))) )
+  }
 
   return(invisible(firewall_status))
 }
@@ -76,6 +104,7 @@ eureka_internet_status <- function(service) {
 #' @importFrom dplyr mutate
 #' @importFrom stats na.omit
 #' @importFrom stringr str_extract
+#' @importFrom tibble enframe
 #'
 #' @examples
 #' \dontrun{
