@@ -30,6 +30,6 @@ verifying that a live human being is submitting the request.
 }
 \examples{
 \dontrun{
-eureka_internet_open('github')
+eureka_internet_request('github')
 }
 }

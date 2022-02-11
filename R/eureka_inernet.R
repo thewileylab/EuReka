@@ -108,7 +108,7 @@ eureka_internet_status <- function(service) {
 #'
 #' @examples
 #' \dontrun{
-#' eureka_internet_open('github')
+#' eureka_internet_request('github')
 #' }
 eureka_internet_request <- function(service) {
   # Hooman Verification ----
